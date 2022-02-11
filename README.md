@@ -1,23 +1,4 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# rails-postgres-full-text-search-sample
 
 ## Prerequisites
 
@@ -38,6 +19,14 @@ Things you may want to cover:
     ```sh
     rails db:create
     ```
+
+## Seeding `HelpfulLink` records
+
+You can seed the database with some `HelpfulLink` records by running
+
+```sh
+rails db:fixtures:load
+```
 
 ## Starting the server
 

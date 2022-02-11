@@ -1,0 +1,18 @@
+one:
+  id: 1
+  title: "Wikipedia: Cat food"
+  description: Starting from first principles
+  url: https://en.wikipedia.org/wiki/Cat_food
+
+two:
+  id: 2
+  title: Organic kitty treats
+  description: For fancy cats who are healthy too
+  url: https://duckduckgo.com/?q=organic+cat+treats
+
+three:
+  id: 3
+  title: Annex Cat Rescue
+  description: Find a fluffy friend to feed treats to
+  url: https://annexcatrescue.ca/
+
