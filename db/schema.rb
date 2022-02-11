@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_11_005437) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_11_225723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_11_005437) do
     t.string "url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "search_docs", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "body", null: false
+    t.tsvector "tsv", null: false
+    t.string "searchable_type", null: false
+    t.bigint "searchable_id", null: false
+    t.datetime "created_at", precision: nil, default: -> { "now()" }, null: false
+    t.datetime "updated_at", precision: nil, default: -> { "now()" }, null: false
+    t.index ["searchable_id", "searchable_type"], name: "index_search_docs_on_searchable_id_and_searchable_type", unique: true
+    t.index ["searchable_type", "searchable_id"], name: "index_search_docs_on_searchable"
+    t.index ["tsv"], name: "index_search_docs_on_tsv", using: :gin
   end
 
 end
