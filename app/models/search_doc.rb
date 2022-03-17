@@ -5,6 +5,10 @@ class SearchDoc < ApplicationRecord
 
   default_scope { select('search_docs.*') }
 
+  scope :with_rank, lambda {
+    merge(select('ts_rank_cd(search_docs.tsv, query, 32) as rank'))
+  }
+
   scope :with_highlights, lambda {
     selection_options = 'StartSel = [HIGHLIGHT], StopSel = [/HIGHLIGHT]'
 

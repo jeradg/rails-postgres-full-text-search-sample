@@ -14,8 +14,10 @@ class SearchController < ApplicationController
   def fetch_results
     SearchDoc
       .includes(:searchable)
+      .with_rank
       .with_highlights
       .query(search_params[:query])
+      .order({ rank: :desc })
   end
 
   def search_params
