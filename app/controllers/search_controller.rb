@@ -14,6 +14,7 @@ class SearchController < ApplicationController
   def fetch_results
     SearchDoc
       .includes(:searchable)
+      .with_highlights
       .query(search_params[:query])
   end
 
@@ -24,10 +25,10 @@ class SearchController < ApplicationController
   def serialize(results)
     results.map { |result|
       {
-        body: result.body,
+        body: result.highlighted_body,
         searchable_id: result.searchable_id,
         searchable_type: result.searchable_type,
-        title: result.title,
+        title: result.highlighted_title,
         url: result.searchable.url,
       }
     }
